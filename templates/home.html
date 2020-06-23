@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="{{url_for('static', filename = 'css/home.css')}}" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic|Work+Sans:300,400,500,600' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div>
+    {% for house in housing_list %}
+        <div class="grid-container">
+          <div class="item1">Seller: {{ house[0] }}</div>
+          <div class="item2">Rating: {{ house[4] }}</div>
+          <div class="item3">Bathrooms: {{ house[2] }}</div>
+          <div class="item4">Bedrooms: {{ house[1] }}</div>
+          {% if house [3] == "N/A" %}
+            <div class="item5">Price: {{ house [3] }}</div>
+          {% else %}
+            <div class="item5">Price: ${{ house [3] }}</div>
+          {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+  </body>
+</html>

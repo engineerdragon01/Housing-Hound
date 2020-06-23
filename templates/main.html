@@ -1,0 +1,112 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <title>
+
+        Main
+
+    </title>
+
+
+      <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic|Work+Sans:300,400,500,600' rel='stylesheet' type='text/css'>
+      <link href="{{url_for('static', filename = 'css/toolkit-startup.css')}}" rel="stylesheet">
+      <link href="{{url_for('static', filename = 'css/application-startup.css')}}" rel="stylesheet">
+      <link href="{{url_for('static', filename = 'css/main.css')}}" rel="stylesheet">
+
+
+
+
+
+    <style>
+      /* note: this is a hack for ios iframe for bootstrap themes shopify page */
+      /* this chunk of css is not part of the toolkit :) */
+      /* …curses ios, etc… */
+      @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+        body {
+          width: 1px;
+          min-width: 100%;
+          *width: 100%;
+        }
+        #stage {
+          height: 1px;
+          overflow: auto;
+          min-height: 100vh;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+    </style>
+  </head>
+
+
+<body>
+<div class="stage" id="stage">
+
+<div class="block block-inverse block-fill-height app-header"
+style="background:white;">
+
+  <div class="container py-4 fixed-top app-navbar">
+  <nav class="navbar navbar-transparent navbar-padded navbar-toggleable-sm">
+    <button
+      class="navbar-toggler navbar-toggler-right hidden-md-up"
+      type="button"
+      data-target="#stage"
+      data-toggle="stage"
+      data-distance="-250">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand mr-auto" href="">
+      <strong style="background: #28669F; padding: 12px; border-radius: 4px; color: #fff;">hɥ</strong>
+    </a>
+
+    <div class="hidden-sm-down text-uppercase">
+      <ul class="navbar-nav">
+        <li class="nav-item px-1 ">
+          <a class="nav-link" href="/" style="color: #28669F;">Main</a>
+        </li>
+        <li class="nav-item px-1 ">
+          <a class="nav-link" href="/about" style="color: #28669F;">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div> 
+<div class = "preferences">
+  <div><strong>Preferences: <br> {{ group_name}}</strong></div>
+  <div>Bedrooms: {{ bedrooms }}</div>
+  <div>Bathrooms: {{ bathrooms }}</div>
+  <div>Price: {{ price }}</div>
+</div>
+<div class ="wrapper">
+  {% for house in housing_list %}
+  <div class= "box">
+    <div class="item1">Seller: {{ house[0] }}</div>
+    <div class="item2">Rating: {{ house[4] }}</div>
+    <div class="item3">Bedrooms: {{ house[1] }}</div>
+    <div class="item4">Bathrooms: {{ house[2] }}</div>
+    {% if house [3] == "N/A" %}
+      <div class="item5">Price: {{ house [3] }}</div>
+    {% else %}
+      <div class="item5">Price: ${{ house [3] }}</div>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+
+<script type = "text/javascript" src="{{url_for('static', filename = 'js/jquery.min.js')}}"></script>
+<script type = "text/javascript" src="{{url_for('static', filename = 'js/tether.min.js')}}"></script>
+<script type = "text/javascript" src="{{url_for('static', filename = 'js/toolkit.js')}}"></script>
+<script type = "text/javascript" src="{{url_for('static', filename = 'js/application.js')}}"></script>
+  </body>
+</html>

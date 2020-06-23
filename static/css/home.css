@@ -1,0 +1,29 @@
+
+
+.item1 { grid-area: header; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+.item5 { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'menu main main main right right'
+    'menu footer footer footer footer footer';
+  grid-gap: 2px;
+  background-color: white;
+  padding: 0px;
+  font-family: "Work sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  color: #28669F;
+}
+
+.grid-container > div {
+  background-color: #CCC;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 15px;
+  font-weight: 300;
+}
